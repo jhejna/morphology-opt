@@ -1,0 +1,29 @@
+name: morph_opt
+channels:
+ - pytorch
+dependencies:
+ - python=3.8
+ - pytorch=1.7.0
+ - torchvision
+ - cpuonly
+ - psutil
+ - numpy
+ - scipy
+ - pandas
+ - matplotlib
+ - seaborn
+ - imageio
+ - cloudpickle
+ - pyyaml
+ - pip
+ - pip:
+   - --find-links https://pytorch-geometric.com/whl/torch-1.7.0+cpu.html
+   - dm_control
+   - gym[mujoco]
+   - stable_baselines3==0.8.0
+   - opencv-python
+   - torch-scatter==2.0.5
+   - torch-sparse==0.6.8
+   - torch-cluster==1.5.8
+   - torch-spline-conv==1.2.0
+   - torch-geometric

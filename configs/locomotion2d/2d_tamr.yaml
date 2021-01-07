@@ -1,0 +1,47 @@
+# TAMR config for 2D Locomotion.
+# This is the same as TAME but only uses a single generation/
+
+env: LocomotionUnsupervised
+env_kwargs:
+  global_state: False
+  time_limit: 3.5
+wrapper: LineGraphWrapper
+
+arena: GM_Terrain
+
+morphology: random2d # can be predefined, like "cheetah" or path to the morphology.
+mutation_kwargs:
+  min_nodes: 3
+  max_nodes: 10
+  joint_prob: 1
+  node_prob: 0.35
+  extent_std: 0.125
+  geom_mut: 0.4
+  joint_mut: 0.2
+  remove_prob: 0.08
+  gen_prob: 0.1
+  joint_type_mut: 0.0
+  joint_std: 20
+  gear_std: 12
+
+evo_alg: TAME
+evo_alg_kwargs:
+  eval_ep: 32
+  keep_percent: 0.06
+  vf_lr: 0.001
+  vf_n_epochs: 30 # increase epochs
+  vf_arch: [192, 192, 192]
+  save_freq: 30
+  random_policy: CosinePolicy
+  sample_freq: 60
+  num_freqs: 2
+  num_phases: 2
+  classifier: GraphConvModel
+  reset_freq: 12
+  include_segments: True
+  state_noise: 0.05
+  num_joint_regularizer: 0.25
+
+evo_learn_kwargs:
+  population_size: 720 # Note that population size gets doubled in the code first gen, so this is half.
+  num_generations: 1

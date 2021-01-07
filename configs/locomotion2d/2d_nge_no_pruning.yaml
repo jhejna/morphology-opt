@@ -1,0 +1,47 @@
+# TAME config for 2D Locomotion.
+
+env: Directions2D
+wrapper: LineGraphWrapper
+
+morphology: random2d # can be predefined, like "cheetah" or path to the morphology.
+mutation_kwargs:
+  min_nodes: 3
+  max_nodes: 10
+  joint_prob: 1
+  node_prob: 0.35
+  extent_std: 0.125
+  geom_mut: 0.4
+  joint_mut: 0.2
+  remove_prob: 0.08
+  gen_prob: 0.1
+  joint_type_mut: 0.0
+  joint_std: 20
+  gear_std: 12
+
+evo_alg: BasicEA
+evo_alg_kwargs:
+  eval_ep: -9
+  cpus_per_ind: 1
+  num_cores: 8
+  keep_percent: 0.6
+  save_freq: 30
+
+evo_learn_kwargs:
+  population_size: 24
+  num_generations: 60
+
+alg: GPPO
+alg_kwargs:
+  n_epochs: 8
+  n_steps: 1000
+  ent_coef: 0.001
+  learning_rate: 0.0003
+  batch_size: 128
+
+policy: NodeACPolicy
+policy_kwargs:
+  net_arch: [192, 192, 192]
+
+learn_kwargs:
+  total_timesteps: 11200 # 32*350 (same number of timesteps as TAME)
+  log_interval: 100

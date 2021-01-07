@@ -1,0 +1,42 @@
+# Evaluation config for 2D Locomotion.
+# Environment should be one of XVel, NegXVel, ZVel
+# For evaluating random agents set the morphology to random2d
+# For evaluating a saved agent, set morphology to the path.
+
+name: null # Add name of the run here.
+
+env: XVel  # one of XVel, NegXVel, ZVel
+
+wrapper: DictObsWrapper
+wrapper_kwargs:
+  keys: ["x", "edge_attr"]
+
+morphology: cheetah # can be predefined or a path
+mutation_kwargs: # mutation args are used in morphology sampling if set to random.
+  min_nodes: 3
+  max_nodes: 10
+  joint_prob: 1
+  node_prob: 0.35
+  extend_std: 0.125
+  geom_mut: 0.4
+  joint_mut: 0.2
+  remove_prob: 0.08
+  gen_prob: 0.1
+  joint_type_mut: 0.0
+  joint_std: 20
+  gear_std: 12
+
+alg: PPO
+alg_kwargs:
+  n_epochs: 8
+  n_steps: 1000
+  ent_coef: 0.001
+  learning_rate: 0.0003
+  batch_size: 128
+
+policy: MlpPolicy
+policy_kwargs:
+  net_arch: [256, 256]
+
+learn_kwargs:
+  total_timesteps: 500000

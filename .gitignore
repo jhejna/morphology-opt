@@ -1,3 +1,8 @@
+# Ignore specific output directories
+.vscode/
+data/
+renders/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
