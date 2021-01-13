@@ -1,6 +1,6 @@
 # Task-Agnostic Morphology Optimization
 
-This repository contains code for the paper [Task-Agnostic Morphology Evolution](https://openreview.net/pdf?id=CGQ6ENUMX6) by Donald (Joey) Hejna, Pieter Abbeel, and Lerrel Pinto. Currently, the publication is under review at ICLR 2021.
+This repository contains code for the paper [Task-Agnostic Morphology Evolution](https://openreview.net/pdf?id=CGQ6ENUMX6) by Donald (Joey) Hejna, Pieter Abbeel, and Lerrel Pinto published at ICLR 2021.
 
 The code has been cleaned up to make it easier to use. An older version of the code was made available with the ICLR submission [here](https://openreview.net/attachment?id=CGQ6ENUMX6&name=supplementary_material). 
 
