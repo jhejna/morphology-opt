@@ -34,7 +34,7 @@ class BasicEA(EvoAlg):
         for i in range(0, len(self.population), batch_size):
             processes = []
             for j, individual in enumerate(self.population[i:min(i+batch_size, len(self.population))]):
-                _, individual_params_path = tempfile.mkstemp(text=True, prefix='params', suffix='.json')
+                _, individual_params_path = tempfile.mkstemp(text=True, prefix='params', suffix='.yaml')
                 individual_params = copy.deepcopy(self.params) 
                 if gen_idx == 0 and not self.retrain:
                     individual_params['learn_kwargs']['total_timesteps'] *= 2 # Train double length on gen 0

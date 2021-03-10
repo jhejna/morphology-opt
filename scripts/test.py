@@ -21,9 +21,9 @@ def main():
     folder = args.path
     if not folder.startswith('/'):
         folder = os.path.join(BASE, folder)
-    while 'params.json' not in os.listdir(folder):
+    while 'params.yaml' not in os.listdir(folder):
         contents = [os.path.join(folder, d) for d in os.listdir(folder) if os.path.isdir(os.path.join(folder, d))]
-        assert len(contents) == 1, "Traversing down directory with multiple paths:" + " ".join(contents)
+        assert len(contents) == 1, "Traversing down directory with multiple paths, but path to model must be unique:" + " ".join(contents)
         folder = os.path.join(folder, contents[0])
     
     test(folder, num_ep=args.episodes, gif=args.gif, deterministic=args.undeterministic, morphology_index=args.morphology)

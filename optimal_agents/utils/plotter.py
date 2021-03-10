@@ -79,15 +79,15 @@ def generate_plots(dirs, xaxis=X_TIMESTEPS, yaxis='r', title=None, labels=None, 
     plt.gcf().dpi = 100.0
     print("Dirs", dirs)
     for i, folder in enumerate(dirs):
-        if not 'params.json' in os.listdir(folder):
-            # If directory contains 1 folder, and none of those folders have params.json, move down.
+        if not 'params.yaml' in os.listdir(folder):
+            # If directory contains 1 folder, and none of those folders have params.yaml, move down.
             while True:
                 contents = get_subdirs(folder)
-                if any(['params.json' in os.listdir(os.path.join(folder, c)) for c in contents]):
+                if any(['params.yaml' in os.listdir(os.path.join(folder, c)) for c in contents]):
                     break
                 folder = os.path.join(folder, contents[0])
         
-        if not 'params.json' in os.listdir(folder):
+        if not 'params.yaml' in os.listdir(folder):
             runs = sorted([os.path.join(folder, r) for r in get_subdirs(folder)])
         else:
             runs = [folder]
