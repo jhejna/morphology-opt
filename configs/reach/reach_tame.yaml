@@ -1,0 +1,48 @@
+# TAME config for 2D Locomotion.
+
+env: ArmReachUnsupervised
+env_kwargs:
+  global_state: False
+  time_limit: 1
+wrapper: LineGraphWrapper
+
+arena: ReachTarget
+
+morphology: random_arm # can be predefined, like "cheetah" or path to the morphology.
+mutation_kwargs:
+  min_nodes: 3
+  max_nodes: 6
+  joint_prob: 1
+  node_prob: 0.35
+  extent_std: 0.125
+  geom_mut: 0.4
+  joint_mut: 0.2
+  remove_prob: 0.2
+  gen_prob: 0.2
+  joint_type_mut: 0.0
+  joint_std: 30
+  gear_std: 10
+
+evo_alg: TAME
+evo_alg_kwargs:
+  eval_ep: 32
+  keep_percent: 0.06
+  vf_lr: 0.001
+  vf_n_epochs: 10
+  vf_arch: [192, 192, 192]
+  save_freq: 30
+  random_policy: NaryPolicy
+  sample_freq: 60
+  num_freqs: 4
+  num_phases: 0
+  classifier: GraphConvModel
+  reset_freq: 12
+  include_segments: False
+  include_end: True
+  state_noise: 0.2
+  matching_noise: true
+  num_joint_regularizer: 0.4
+
+evo_learn_kwargs:
+  population_size: 24
+  num_generations: 60

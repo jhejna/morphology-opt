@@ -1,0 +1,30 @@
+# Evaluation config for 2D Locomotion.
+# Environment should be one of XVel, NegXVel, ZVel
+# For evaluating random agents set the morphology to random2d
+# For evaluating a saved agent, set morphology to the path.
+
+name: null # Add name of the run here.
+
+env: ArmReach
+arena: ReachTarget
+
+wrapper: DictObsWrapper
+wrapper_kwargs:
+  keys: ["x", "edge_attr", "u"]
+
+morphology: reacher # can be predefined or a path
+
+alg: PPO
+alg_kwargs:
+  n_epochs: 8
+  n_steps: 1000
+  ent_coef: 0.001
+  learning_rate: 0.0003
+  batch_size: 128
+
+policy: MlpPolicy
+policy_kwargs:
+  net_arch: [256, 256]
+
+learn_kwargs:
+  total_timesteps: 500000
