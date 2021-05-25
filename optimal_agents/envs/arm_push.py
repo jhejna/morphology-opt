@@ -121,7 +121,7 @@ class ArmPushUnsupervised(MorphologyEnv):
                     self._physics.data.xpos[2].copy(),
                 ), axis=0) # Get the box positions
         x_obs = np.tile(np.expand_dims(x_obs, axis=0), (len(self._morphology), 1))
-        obs = dict(x=x_obs, edge_indx=self._morphology.edge_list)
+        obs = dict(x=x_obs, edge_index=self._morphology.edge_list)
         return obs
 
     def _post_step(self, action):

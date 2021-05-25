@@ -61,7 +61,7 @@ class ArmReachUnsupervised(MorphologyEnv):
                 obs = self._physics.data.xpos[self._morphology.end_site_indices].copy()
             else:
                 obs = self._physics.data.xpos[-len(self._morphology):].copy()
-        obs = dict(x=obs, edge_indx=self._morphology.edge_list)
+        obs = dict(x=obs, edge_index=self._morphology.edge_list)
         return obs
 
     def _post_step(self, action):
